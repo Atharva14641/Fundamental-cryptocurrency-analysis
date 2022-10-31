@@ -194,19 +194,17 @@ def draw_custom_params(data):
     plt.axhline(y=0, color='gray', linestyle='-')
     _draw_end(fig, show_yaxis=True)
 
-def draw_custom_dots(data):
-    fig = plt.figure()
-    fig.show()    
-    for label, series in data.items():
-        plt.plot(
-            [a[0] for a in series],
-            [a[1] for a in series],
-            "o-",
-            label=label,
-        )
-    plt.axhline(y=100, color='gray', linestyle='-')
-    plt.axhline(y=0, color='gray', linestyle='-')
-    _draw_end(fig, show_yaxis=True)
+#Fix draw_custom_dots function 
+
+
+
+
+
+
+
+
+
+
 
 def signaturebar(fig,text,fontsize=10,pad=5,xpos=20,ypos=7.5,
                  rect_kw = {"facecolor":"#EEEEEE", "edgecolor":"#DDDDDD"},
