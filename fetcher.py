@@ -10,6 +10,43 @@ from util import sleep
 
 #fix error in cache
 
+class Cache:
+    def _init_(self, folder="cache"):
+        self.folder = folder
+
+    def path(self, url):
+        scheme, netloc, path, params, query, fragment = urlparse(url)    
+        p = [self.folder, netloc] + path.split("/")
+        
+        if query:
+            if not p[-1]:
+                p[-1] = query
+            else:
+                p += [query]
+        
+        if not p[-1]:
+            p[-1] = "index.html"
+        
+        return os.path.join(*p)
+        
+    def get(self, url):
+        p = self.path(url)
+        if os.path.exists(p):
+            log.debug("Found in cache: {}".format(url))
+            try:
+                return open(p).read()
+            except UnicodeDecodeError:
+                return open(p, encoding="utf-8").read()
+            
+        log.debug("Not in cache: {}".format(url))
+        return None        
+        
+    def put(self, url, text):
+        p = self.path(url)
+        os.makedirs(p.replace("\\", "/").rsplit("/", 1)[0], exist_ok=True)
+        open(p, "wb").write(text.encode("utf-8"))
+        log.debug("Stored to cache: {}".format(url))
+
 
 
 
