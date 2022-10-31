@@ -13,13 +13,10 @@ from config import DATE_START
 def today():
     return datetime.strptime(datetime.now().strftime("%Y-%m-%d"), "%Y-%m-%d")
 
-class Series:
-    def __init__(self, date_start=DATE_START, date_stop=today()):
-        self.date_start = date_start
-        self.date_stop = date_stop
+#fix error class Series
 
-    def prepare(self, s):
-        return series_prepare(s, date_start=self.date_start, date_stop=self.date_stop)
+
+
 
 
 def sleep(secs):
