@@ -164,21 +164,19 @@ def draw_old(km):
 
     _draw_end(fig)
 
-def draw_custom(data):
-    fig = plt.figure()
-    fig.show()    
-    for label, series in data.items():
-        linestyle = "-"
-        if label.startswith("[:]"):
-            linestyle = ":"
-        elif label.startswith("[--]"):
-            linestyle = "--"
-        plt.plot(
-            [a[0] for a in series],
-            [a[1] for a in series],
-            label=label,
-            linestyle=linestyle
-        )
+#Fix draw_custom function 
+
+
+
+
+
+
+
+
+
+
+
+
 
     _draw_end(fig, show_yaxis=True)
 
